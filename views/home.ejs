@@ -1,0 +1,94 @@
+
+<!doctype html>
+<html dir="rtl" lang="he">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SAAS blocker API</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills float-right">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">בית <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">SAAS Blocker API</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1 class="display-3">שירות מיוחד - מצא את האתר</h1>
+        <p class="lead">הקמתם רשת חברתית קטנה ומעוטת משאבים ואתם מעוניינים לחסום אתר של מישהו? אותו מישהו מערים עליכם ומשתמש בטכנולוגיה 'מתקדמת' על מנת
+          'להסוות' את האתר? אל דאגה! השירות הזה יגלה אם הקישור מפנה אל האתר האסור!
+        </p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">הורידו את הפרויקט בגיטהאב</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h4>שירות המיועד להגנה מפני קישורים אסורים</h4>
+          <p>בשנת 2017 הותקפה רשת פייסבוק, רשת דלת אמצעים ועניה על ידי דורי בן ישראל שהשתמש בכוחות התכנות שלו על מנת להסוות את אתר <a href="http://mizbala.com">המזבלה</a>
+          כאתר אחר בשם mizbalax.com
+          </p>
+          <p>כך למשל, אם תיכנסו אל הכתובת <a href="mizbalax.com/sue-facebook" target="_blank">mizbalax.com/sue-facebook</a> תראו את אתר המזבלה. אתר שלפי פייסבוק הוגדר כאתר ספאם לא בטיחותי.</p>
+          </p>מתכנתי פייסבוק לא הצליחו להבין כיצד דורי מהתל בשירותי החסימה של הרשת החברתית. זו הסיבה שהקמתי את שירות 'החסימה המתוחכמת'. שירות
+          מבוסס Node.js בטכנולוגיה מחוכמת אשר מקבל שני פרמטרים - הראשון כתובת האתר לבדיקה והשני כתובת האתר האסור. השירות יחזיר true או false.
+          </p>
+          <p>
+            מתכנתי פייסבוק מוזמנים לגשת אל הקוד ולהשתמש בו. אנא שימו לב שהשימוש בקוד כפוף לתנאי השימוש. ניתן לראות דוגמה לשירות בתחתית הדף.
+          </p>
+        </div>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6 col-lg-push-6">
+          <form class="form-signin">
+            <label for="urlToCheck" class="sr-only">האתר לבדיקה</label>
+            <input class="form-control" type="url" id="urlToCheck" required="required" value="http://mizbalax.com/sue-facebook" />
+            <label for="badURL" class="sr-only">האתר האסור</label>
+            <input class="form-control" type="text" required="required" id="badURL" value="mizbala.com" />
+            <button id="testSAAS" class="btn btn-lg btn-primary btn-block" type="button" >בדוק</button>
+            <div id="result"></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h4>הסבר טכני למתקדמים</h4>
+          <pre>
+            GET
+            /isItForbidden?url=http://google.com
+          </pre>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p class="small">&copy; רשיון - BSD3 + אם אתם משתמשים בקוד הזה, כל הפטנטים שלכם שייכים לי. אבל זה קוד פתוח, באמת, נשבע לכם. באמא שלי.</p>
+      </footer>
+
+    </div> <!-- /container -->
+    <script>
+    document.getElementById('testSAAS').addEventListener('click', () => {
+      let url = document.getElementById('urlToCheck').value;
+      let badURL = document.getElementById('badURL').value;
+      let requestURL = `/isItForbidden?url=${url}&badURL=${badURL}`;
+      fetch(requestURL, {})
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonObject) => {
+        document.getElementById('result').innerHTML = jsonObject.result;
+      });
+      return false;
+    });
+    </script>
+    </body>
+</html>
