@@ -1,12 +1,11 @@
 let express = require('express');
 let request = require('request');
 let app = express();
+let port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-app.listen(3000, function () {
-	console.log('Dori blocker app listening on port 3000!');
-});
+app.listen(port);
 
 app.get('/isitforbidden', function (req, res) {
 	let URL = req.param('url'); //'http://mizbalax.com/sue-facebook';
