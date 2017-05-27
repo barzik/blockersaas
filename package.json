@@ -18,6 +18,8 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "mocha": "^3.4.2",
+    "nock": "^9.0.13",
+    "should": "^11.2.1",
     "supertest": "^3.0.0"
   }
 }
