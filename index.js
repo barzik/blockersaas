@@ -37,3 +37,5 @@ function findDori(body, forbiddenURL) {
 		return false;
 	}
 }
+
+module.exports = app;
