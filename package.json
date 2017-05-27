@@ -4,7 +4,7 @@
   "description": "Blocker for mizbalaX",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha",
     "lint": "./node_modules/.bin/eslint --fix *.js **/*.js",
     "start": "node index.js"
   },
